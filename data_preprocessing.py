@@ -61,3 +61,31 @@ def treat_outlier(df: pd.DataFrame) -> pd.DataFrame:
     # Check if any NaNs remain
     #df['Weight'].isnull().sum()
     return df
+
+def encode_cat_features(df: pd.DataFrame, user_id: str):
+    """
+    Applies frequency and ordinal encoding to categorical features and saves the encoders.
+
+    Args:
+        df (pd.DataFrame): Training DataFrame containing categorical features.
+        user_id (str): Identifier for the user, used to save encoders.
+
+    Returns:
+        pd.DataFrame: DataFrame with encoded categorical features.
+    """
+    # Frequency encoding
+    freq_encoder = CountEncoder(cols=['Profile_Name'], normalize=True)
+    df['Profile_Name_encoded'] = freq_encoder.fit_transform(df['Profile_Name'])
+    model_storage.save_model(user_id, freq_encoder, component="freq_encoder")  # ✅ Save using your versioning logic
+
+    # Ordinal encoding
+    ordinal_features = ['Alloy', 'Finish', 'GD_T', 'Customer_Category']
+    ordinal_encoder = OrdinalEncoder()
+    df[ordinal_features] = ordinal_encoder.fit_transform(df[ordinal_features])
+    model_storage.save_model(user_id, ordinal_encoder, component="ordinal_encoder")  # ✅ Save this too
+
+    # Clean column
+    df.drop(columns=['Profile_Name'], inplace=True)
+    df.rename(columns={'Profile_Name_encoded': 'Profile_Name'}, inplace=True)
+
+    return df
