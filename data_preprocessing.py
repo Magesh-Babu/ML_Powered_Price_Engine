@@ -112,3 +112,23 @@ def feature_engineering(df: pd.DataFrame, user_id: str):
     model_storage.save_model(user_id, lme_features, component="lme")  # ✅ Save this as well
 
     return df
+
+def load_and_preprocess(user_id: str) -> pd.DataFrame:
+    """
+    Loads a user's dataset and applies preprocessing and feature engineering steps.
+
+    Args:
+        user_id (str): Identifier for the user whose data is being processed.
+
+    Returns:
+        pd.DataFrame: Cleaned and feature-engineered DataFrame ready for model training.
+    """    
+    logger = get_user_logger(user_id)
+    df = load_csv(user_id)
+    df = apply_imputation(df)
+    df = treat_outlier(df)
+    df = encode_cat_features(df, user_id)
+    df = feature_engineering(df, user_id)
+    logger.info(f"Data Preprocessing completed.")
+    #print("Data preprocessing complete. Final dataset shape:", df.shape)
+    return df
