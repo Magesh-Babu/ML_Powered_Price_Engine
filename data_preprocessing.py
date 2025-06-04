@@ -89,3 +89,26 @@ def encode_cat_features(df: pd.DataFrame, user_id: str):
     df.rename(columns={'Profile_Name_encoded': 'Profile_Name'}, inplace=True)
 
     return df
+
+def feature_engineering(df: pd.DataFrame, user_id: str):
+
+    df['Quote_Date'] = pd.to_datetime(df['Quote_Date'])
+    df = df.sort_values('Quote_Date')
+
+    # Profile complexity
+    df['Profile_Complexity'] = (df['Weight_kg_m'] / df['Length_m'] *df['Tolerances'] * (df['GD_T'] + 1))
+
+    # Manufacturing difficulty
+    df['Manufacturing_Difficulty'] = df['Tolerances'] * (df['GD_T'] + 1)
+
+    # LME moving average and lag
+    df['LME_MA_7'] = df['LME_Price_EUR'].rolling(window=7, min_periods=1).mean()
+    df['LME_Lag_1'] = df['LME_Price_EUR'].shift(1).bfill()
+
+    lme_features = {
+        "LME_MA_7": df['LME_MA_7'].iloc[-1],
+        "LME_Lag_1": df['LME_Lag_1'].iloc[-1]
+    }
+    model_storage.save_model(user_id, lme_features, component="lme")  # ✅ Save this as well
+
+    return df
