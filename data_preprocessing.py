@@ -7,7 +7,15 @@ from sklearn.ensemble import IsolationForest
 from category_encoders import CountEncoder
 
 def apply_imputation(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Imputes missing 'Lead_Time_weeks' values using a trained Random Forest regressor.
 
+    Args:
+        df (pd.DataFrame): DataFrame containing product features and lead time.
+
+    Returns:
+        pd.DataFrame: DataFrame with missing lead times imputed.
+    """
     # Split dataset: rows with and without missing Lead Time
     df_lead_train = df[df["Lead_Time_weeks"].notnull()]
     df_lead_missing = df[df["Lead_Time_weeks"].isnull()]
@@ -41,7 +49,15 @@ def apply_imputation(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 def treat_outlier(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Detects and replaces outliers in the 'Weight_kg_m' column using interpolation.
 
+    Args:
+        df (pd.DataFrame): DataFrame containing the 'Weight_kg_m' column.
+
+    Returns:
+        pd.DataFrame: DataFrame with outliers treated and interpolated.
+    """
     # Isolation Forest for outlier detection on 'Weight'
     iso_forest = IsolationForest(contamination=0.02, random_state=42)
     df['Weight_outlier'] = iso_forest.fit_predict(df[['Weight_kg_m']])
@@ -91,7 +107,16 @@ def encode_cat_features(df: pd.DataFrame, user_id: str):
     return df
 
 def feature_engineering(df: pd.DataFrame, user_id: str):
+    """
+    Applies domain-specific feature engineering and saves derived components for future use.
 
+    Args:
+        df (pd.DataFrame): DataFrame with raw or encoded training features.
+        user_id (str): Identifier for the user, used to save derived components.
+
+    Returns:
+        pd.DataFrame: DataFrame with additional engineered features.
+    """
     df['Quote_Date'] = pd.to_datetime(df['Quote_Date'])
     df = df.sort_values('Quote_Date')
 
