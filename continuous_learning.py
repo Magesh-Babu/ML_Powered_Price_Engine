@@ -61,28 +61,6 @@ def retrain_user_model(user_id: str):
     return new_version, mae
 
 
-# 3. Concept Drift (Discussion only)
-"""
-Concept drift means that the relationship between input features and target (price) changes over time.
-To monitor drift:
-- Track prediction errors (e.g., rolling MAE by month)
-- Use statistical tests like KS or PSI between feature distributions over time
-- Trigger retraining if performance drops or drift is detected
-
-You could extend this by logging predictions + true outcomes post-deployment and comparing them monthly.
-"""
-
-# 4. Isolation per user
-"""
-Isolation is achieved by:
-- Using user-specific paths: data/{user_id}_quotes.csv and models/{user_id}_v{version}.pkl
-- Ensuring each user’s model and training data are kept separate
-- Enabling secure access to only their own data and models
-
-Optional enhancements:
-- Encrypt model files at rest (e.g., with Fernet or AES)
-- Authenticate API access tokens before retraining or retrieval
-"""
 
 # Optional: wire into an API endpoint
 def api_trigger_retraining(user_id: str, new_quote: dict):
