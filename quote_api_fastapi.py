@@ -8,6 +8,7 @@ import joblib
 import os
 from schemas import QuoteSchemaV1  # Ensure this is imported from your existing schema
 from model_development import load_model, get_latest_version  # Reuse from earlier
+from utils import get_user_logger
 
 app = FastAPI(title="Quote Prediction API")
 
@@ -53,3 +54,18 @@ def predict_quote(request: QuoteRequest):
         confidence_interval=(round(lower, 4), round(upper, 4)),
         model_version=version
     )
+
+
+@app.post("/users/{user_id}/feedback", response_model=FeedbackResponse)
+def post_feedback(user_id: str, feedback: FeedbackRequest):
+    """
+    Submit a validated quote to improve the model for the user.
+    """
+    logger = get_user_logger(user_id)
+    try:
+        new_version = add_feedback(user_id, feedback.model_dump())
+    except Exception as e:
+        logger.error(f"Internal error during feedback processing: {e}")
+        raise HTTPException(status_code=500, detail="Internal server error during feedback processing")
+    # Return confirmation of model update
+    return FeedbackResponse(message="Feedback added and model retrained", new_version=new_version)
