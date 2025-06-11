@@ -1,0 +1,13 @@
+features:
+  indep_var: ["Alloy", "Finish", "Length_m", "Weight_kg_m", "Profile_Name",
+              "Tolerances", "GD_T", "Order_Quantity", "LME_Price_EUR", 
+              "Customer_Category", "Lead_Time_weeks"]
+  target: "Quote_Price_SEK"
+  date: "Quote_Date"
+
+encryption:
+  enabled: false
+  key: ""  # If enabled, provide a base64-encoded key for model file encryption
+
+storage:
+  base_dir: "user_data"
