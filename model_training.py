@@ -6,10 +6,10 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score, m
 from skopt import BayesSearchCV
 from skopt.space import Real, Integer
 
-from pricing_engine import data_preprocessing
-from pricing_engine import model_storage
-from pricing_engine.utils import get_user_logger
-from pricing_engine.config import config
+import data_preprocessing
+import model_storage
+from utils import get_user_logger
+from config import config
 
 def train_model(user_id: str):
     """
