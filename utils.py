@@ -1,6 +1,6 @@
 import os
 import logging
-from pricing_engine.config import config
+from config import config
 
 def get_user_logger(user_id: str):
     """

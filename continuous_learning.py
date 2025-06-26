@@ -5,6 +5,19 @@ import model_training
 from utils import get_user_logger
 
 def add_feedback(user_id: str, feedback_data: dict) -> int:
+    """
+    Appends user feedback to the dataset and retrains the model.
+
+    Args:
+        user_id (str): Identifier for the user.
+        feedback_data (dict): Dictionary containing input features, actual price, and date.
+
+    Returns:
+        int: The new model version after retraining.
+
+    Raises:
+        Exception: If writing to the dataset file fails.
+    """    
     logger = get_user_logger(user_id)
     logger.info(f"Received feedback data: {feedback_data}")
     base_dir = config['storage']['base_dir']

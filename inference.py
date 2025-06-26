@@ -1,9 +1,9 @@
 import pandas as pd
 import numpy as np
-from pricing_engine import model_storage
-from pricing_engine import model_training
-from pricing_engine import data_preprocessing
-from pricing_engine.utils import get_user_logger
+import model_storage
+import model_training
+import data_preprocessing
+from utils import get_user_logger
 
 def predict_price(user_id: str, features: dict):
     """
