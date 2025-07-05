@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import model_storage
 import model_training
-import data_preprocessing
+import user_data_preprocess
 from utils import get_user_logger
 
 def predict_price(user_id: str, features: dict):
@@ -34,7 +34,7 @@ def predict_price(user_id: str, features: dict):
     
     # Step 1: Transform the user input to match training data format
     try:
-        X_new = data_preprocessing.transform_user_input(user_id, features)
+        X_new = user_data_preprocess.transform_user_input(user_id, features)
     except Exception as e:
         logger.error(f"Input transformation failed: {e}")
         raise ValueError(f"Error in transforming user input: {str(e)}") from e
