@@ -89,8 +89,8 @@ The application provides a RESTful API built with **FastAPI**. FastAPI was chose
 ### 🔨 Step-by-Step
 1. **Clone the Repo**
 ```
-git clone https://github.com/Magesh-Babu/ai-powered-price-engine.git
-cd ai-powered-price-engine
+git clone https://github.com/Magesh-Babu/ML_Powered_Price_Engine.git
+cd ML_Powered_Price_Engine
 ```
 2. **Create Virtual Environment (Optional but Recommended)**
 ```
