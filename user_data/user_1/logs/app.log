@@ -1,0 +1,12 @@
+2025-07-10 10:37:04,410 - INFO - Received prediction request: {'Alloy': 'Iron', 'Finish': 'Powder coated', 'Length_m': 0.1, 'Weight_kg_m': 0.01, 'Tolerances': 0.05, 'GD_T': 'low', 'Order_Quantity': 1, 'LME_Price_EUR': 0.1, 'Customer_Category': 'micro', 'Lead_Time_weeks': 1, 'Profile_Name': 'string'}
+
+2025-07-10 10:37:04,411 - ERROR - Internal error during quote generation: name 'get_user_logger' is not defined
+
+2025-07-10 10:41:44,265 - INFO - Received prediction request: {'Alloy': 'Iron', 'Finish': 'Powder coated', 'Length_m': 0.1, 'Weight_kg_m': 0.01, 'Tolerances': 0.05, 'GD_T': 'low', 'Order_Quantity': 1, 'LME_Price_EUR': 0.1, 'Customer_Category': 'micro', 'Lead_Time_weeks': 1, 'Profile_Name': 'string'}
+
+2025-07-10 10:41:44,266 - ERROR - Internal error during quote generation: name 'load_csv' is not defined
+
+2025-07-10 10:44:35,849 - INFO - Received prediction request: {'Alloy': 'Iron', 'Finish': 'Powder coated', 'Length_m': 0.1, 'Weight_kg_m': 0.01, 'Tolerances': 0.05, 'GD_T': 'low', 'Order_Quantity': 1, 'LME_Price_EUR': 0.1, 'Customer_Category': 'micro', 'Lead_Time_weeks': 1, 'Profile_Name': 'string'}
+
+2025-07-10 10:44:35,849 - ERROR - Internal error during quote generation: module 'pandas' has no attribute 'load_csv'
+

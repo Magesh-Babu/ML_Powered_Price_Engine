@@ -1,10 +1,28 @@
 import sys
 import pandas as pd
 import numpy as np
+import model_storage
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import OrdinalEncoder
 from sklearn.ensemble import IsolationForest
 from category_encoders import CountEncoder
+from utils import get_user_logger
+
+def load_csv(user_id: str) -> pd.DataFrame:
+    """
+    Loads historical quote data for a given user from a CSV file.
+
+    Args:
+        user_id (str): The user ID whose data should be loaded.
+
+    Returns:
+        pd.DataFrame: DataFrame containing the user's historical quotes.
+    """
+    base_dir = config['storage']['base_dir']
+    file_path = f"{base_dir}/{user_id}/simulated_dataset.csv"
+    # This will raise FileNotFoundError if the file does not exist
+    df = pd.read_csv(file_path)
+    return df
 
 def apply_imputation(df: pd.DataFrame) -> pd.DataFrame:
     """
