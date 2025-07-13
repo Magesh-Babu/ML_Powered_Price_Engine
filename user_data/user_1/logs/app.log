@@ -1,0 +1,32 @@
+2025-07-13 09:32:28,340 - INFO - Received prediction request: {'Alloy': 'Iron', 'Finish': 'Powder coated', 'Length_m': 0.1, 'Weight_kg_m': 0.01, 'Tolerances': 0.05, 'GD_T': 'low', 'Order_Quantity': 1, 'LME_Price_EUR': 0.1, 'Customer_Category': 'micro', 'Lead_Time_weeks': 1, 'Profile_Name': 'string'}
+
+2025-07-13 09:32:29,186 - INFO - Data Preprocessing completed.
+
+2025-07-13 09:32:29,188 - INFO - Training data columns: Index(['Alloy', 'Finish', 'Length_m', 'Weight_kg_m', 'Tolerances', 'GD_T',
+       'Order_Quantity', 'LME_Price_EUR', 'Customer_Category',
+       'Lead_Time_weeks', 'Profile_Name', 'Profile_Complexity',
+       'Manufacturing_Difficulty', 'LME_MA_7', 'LME_Lag_1'],
+      dtype='object')
+
+2025-07-13 09:33:05,918 - INFO - Model training completed with metrics: {'Best Hyperparameters': OrderedDict([('max_depth', 18), ('max_features', 1.0), ('min_samples_leaf', 1), ('min_samples_split', 2), ('n_estimators', 300)]), 'MAE': 0.0025, 'RMSE': 0.0, 'R2 Score': 1.0, 'MAPE (%)': 0.08}
+
+2025-07-13 09:33:05,945 - INFO - Model training completed. Model version 1 saved.
+
+2025-07-13 09:33:06,787 - INFO - Generated quote: 4.16 Prediction Interval: (4.14,4.17)(using model v1)
+
+2025-07-13 09:34:48,413 - INFO - Received feedback data: {'Alloy': 'Iron', 'Finish': 'Powder coated', 'Length_m': 0.1, 'Weight_kg_m': 0.01, 'Tolerances': 0.05, 'GD_T': 'low', 'Order_Quantity': 1, 'LME_Price_EUR': 0.1, 'Customer_Category': 'micro', 'Lead_Time_weeks': 1, 'Profile_Name': 'string', 'Quote_Price_SEK': 1.0, 'Quote_Date': datetime.date(2025, 7, 13)}
+
+2025-07-13 09:34:49,291 - INFO - Data Preprocessing completed.
+
+2025-07-13 09:34:49,293 - INFO - Training data columns: Index(['Alloy', 'Finish', 'Length_m', 'Weight_kg_m', 'Tolerances', 'GD_T',
+       'Order_Quantity', 'LME_Price_EUR', 'Customer_Category',
+       'Lead_Time_weeks', 'Profile_Name', 'Profile_Complexity',
+       'Manufacturing_Difficulty', 'LME_MA_7', 'LME_Lag_1'],
+      dtype='object')
+
+2025-07-13 09:35:17,427 - INFO - Model training completed with metrics: {'Best Hyperparameters': OrderedDict([('max_depth', 18), ('max_features', 1.0), ('min_samples_leaf', 1), ('min_samples_split', 2), ('n_estimators', 300)]), 'MAE': 0.0025, 'RMSE': 0.0, 'R2 Score': 1.0, 'MAPE (%)': 0.08}
+
+2025-07-13 09:35:17,450 - INFO - Model training completed. Model version 2 saved.
+
+2025-07-13 09:35:17,452 - INFO - Feedback processed: model retrained to version 2
+
