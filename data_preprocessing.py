@@ -7,6 +7,7 @@ from sklearn.preprocessing import OrdinalEncoder
 from sklearn.ensemble import IsolationForest
 from category_encoders import CountEncoder
 from utils import get_user_logger
+from config import config
 
 def load_csv(user_id: str) -> pd.DataFrame:
     """
@@ -19,7 +20,7 @@ def load_csv(user_id: str) -> pd.DataFrame:
         pd.DataFrame: DataFrame containing the user's historical quotes.
     """
     base_dir = config['storage']['base_dir']
-    file_path = f"{base_dir}/{user_id}/simulated_dataset.csv"
+    file_path = f"{base_dir}/{user_id}/quotes_dataset_messy.csv"
     # This will raise FileNotFoundError if the file does not exist
     df = pd.read_csv(file_path)
     return df
