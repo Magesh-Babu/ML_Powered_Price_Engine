@@ -8,6 +8,7 @@ The AI-Powered Price Engine is a machine learning project that predicts manufact
 
 The system is designed as a modular pipeline where data flows through sequential stages from raw input to price predictions. The major components and data flow are as follows:
 
+1. **Data Extraction**: Extracts historical data from 50 PDF files and simulate to 1000 records.
 1. **Data Loading**: Reads historical component data from a CSV file.
 2. **Data Preprocessing**: Cleans missing values, treats outliers, and encodes categorical variables.
 3. **Feature Engineering**: Creates new domain-specific features to enhance prediction quality.
@@ -64,7 +65,7 @@ The model demonstrates exceptionally high performance across all evaluation metr
 - R² Score (1.0) suggests the model captures 100% of the variance in the target variable, meaning the model predictions align almost perfectly with actual prices.
 - MAPE (0.08%) shows that the model's predictions are off by less than one-tenth of one percent, making it extremely reliable even in percentage terms — especially useful in business reporting contexts.
 
-These metrics are consistent with a model that is both well-fitted and generalizable to the test set. However, the real-world data drift or feedback may introduce noise over time, so the pipeline is designed to support continuous learning and feedback integration to maintain this level of accuracy.
+It's important to note that the exceptionally high performance metrics observed here are a result of utilizing a controlled, synthesized, or highly cleaned experimental dataset designed to robustly demonstrate the capabilities and architecture of the model development pipeline. While indicative of the pipeline's potential, real-world data would typically introduce complexities such as data drift and noise, leading to more nuanced performance outcomes. This project primarily showcases the end-to-end process and robustness of the system design.
 
 ## Price Prediction and Uncertainty
 
